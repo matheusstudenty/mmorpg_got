@@ -32,5 +32,5 @@ module.exports.cadastrar = function(application, req, res){
     {
         res.render('index', {validacao: {}});
     } */
-    res.send('Podemos inserir');   
+    res.redirect('/');   
 }

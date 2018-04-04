@@ -38,7 +38,14 @@ module.exports.pergaminhos = function(application, req, res){
         res.render('index', { validacao: {}});
         return;
     }
-    res.render('pergaminhos');
+
+    /*recuperar as ações inseridas no banco de dados*/
+
+    var connection = application.config.dbConnection;
+    var JogoDAO = new application.app.models.JogoDAO(connection);
+
+    var usuario = req.session.usuario;
+    JogoDAO.getAcoes(usuario, res);
 }
 
 module.exports.ordenar_acao_sudito = function(application, req, res){
